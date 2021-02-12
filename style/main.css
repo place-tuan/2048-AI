@@ -8,7 +8,7 @@ html, body {
   font-size: 18px; }
 
 body {
-  margin: 80px 0; }
+  margin: 0; }
 
 .heading:after {
   content: "";
@@ -21,6 +21,10 @@ h1.title {
   margin: 0;
   display: block;
   float: left; }
+
+.tile {
+  pointer-events: none;
+}
 
 @-webkit-keyframes move-up {
   0% {
@@ -132,7 +136,7 @@ hr {
     opacity: 1; } }
 
 .game-container {
-  margin-top: 40px;
+  margin-top: 0px;
   position: relative;
   padding: 15px;
   cursor: default;
@@ -458,7 +462,7 @@ hr {
     font-size: 15px; }
 
   body {
-    margin: 20px 0;
+    margin: 0;
     padding: 0 20px; }
 
   h1.title {

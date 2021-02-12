@@ -51,23 +51,39 @@ KeyboardInputManager.prototype.listen = function () {
     }
   });
 
-  var retry = document.getElementsByClassName("retry-button")[0];
-  retry.addEventListener("click", this.restart.bind(this));
-
-  var hintButton = document.getElementById('hint-button');
-  hintButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    var feedbackContainer  = document.getElementById('feedback-container');
-    feedbackContainer.innerHTML = '<img src=img/spinner.gif />';
-    self.emit('think');
+  var radios = document.querySelectorAll(".valueRadio");
+  radios.forEach(function(radio) {
+    radio.addEventListener('click', function(e) {
+      document.querySelector('#input').value = e.target.value;
+    });
   });
 
-  var runButton = document.getElementById('run-button');
-  runButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    self.emit('run')
-  })
+  var gameStarted = false;
 
+  var cells = document.querySelectorAll(".grid-cell");
+  cells.forEach(function(cell) {
+    cell.addEventListener('click', function(e) {
+      e.preventDefault();
+      var coords = e.target.id.split(',');
+      var value = parseInt(document.querySelector('#input').value, 10);
+      window.addTile(parseInt(coords[0], 10), parseInt(coords[1], 10), value, gameStarted);
+    })
+  });
+
+  var startStopBtn = document.querySelector("#startStopBtn");
+  startStopBtn.addEventListener('click', function(e) {
+    if (gameStarted) {
+      gameStarted = false;
+      e.target.innerText = "Start Game";
+    } else {
+      gameStarted = true;
+      if (grid.availableCells().length < 16) {
+        var bestMove = window.manager.ai.getBest();
+        window.manager.move(bestMove.move);
+      }
+      e.target.innerText = "Stop Game";
+    }
+  });
 
   // Listen to swipe events
   var gestures = [Hammer.DIRECTION_UP, Hammer.DIRECTION_RIGHT,
@@ -78,7 +94,7 @@ KeyboardInputManager.prototype.listen = function () {
     drag_block_horizontal: true,
     drag_block_vertical: true
   });
-  
+
   handler.on("swipe", function (event) {
     event.gesture.preventDefault();
     mapped = gestures.indexOf(event.gesture.direction);

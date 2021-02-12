@@ -49,6 +49,24 @@ GameManager.prototype.setup = function () {
 
   // Update the actuator
   this.actuate();
+  window.grid = this.grid;
+  window.manager = this;
+  window.addTile = function (x, y, v, mv) {
+    if (v == 0) {
+      window.grid.removeTile(new Tile({x: x, y: y}));
+    } else {
+      window.grid.insertTile(new Tile({x: x, y: y}, v));
+    }
+    window.manager.actuate();
+    var bestMove = window.manager.ai.getBest();
+    var bestMoveResult = document.querySelector("#bestMoveResult");
+    if (mv) {
+      setTimeout(function() { window.manager.move(bestMove.move); }, 1000);
+      bestMoveResult.innerText = "The best move is: " + ['UP','RIGHT','DOWN','LEFT'][bestMove.move];
+    } else {
+      bestMoveResult.innerText = "";
+    }
+  }
 };
 
 
@@ -57,7 +75,7 @@ GameManager.prototype.actuate = function () {
   this.actuator.actuate(this.grid, {
     score: this.score,
     over:  this.over,
-    won:   this.won
+    won:   this.won,
   });
 };
 
