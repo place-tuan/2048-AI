@@ -10,6 +10,34 @@ html, body {
 body {
   margin: 0; }
 
+.fixedMenu {
+  position: fixed; top: 47px; left: 50%; width: 100px; padding: 10px; margin-left: 80px;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.mobileMenuItem {
+  width: 33%;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 900px) {
+  div.fixedMenu {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  div.mobileMenu {
+    display: none;
+  }
+}
+
+
 .heading:after {
   content: "";
   display: block;
@@ -111,7 +139,7 @@ hr {
   margin-bottom: 30px; }
 
 .container {
-  width: 500px;
+  width: 900px;
   margin: 0 auto; }
 
 @-webkit-keyframes fade-in {
@@ -469,7 +497,7 @@ hr {
     font-size: 50px; }
 
   .container {
-    width: 280px;
+    width: 350px;
     margin: 0 auto; }
 
   .score-container {
@@ -633,7 +661,7 @@ hr {
       top: 203px; }
 
   .game-container {
-    margin-top: 20px; }
+    margin-top: 0px; }
 
   .tile {
     font-size: 35px; }

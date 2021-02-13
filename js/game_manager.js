@@ -61,8 +61,10 @@ GameManager.prototype.setup = function () {
     var bestMove = window.manager.ai.getBest();
     var bestMoveResult = document.querySelector("#bestMoveResult");
     if (mv) {
-      setTimeout(function() { window.manager.move(bestMove.move); }, 1000);
-      bestMoveResult.innerText = "The best move is: " + ['UP','RIGHT','DOWN','LEFT'][bestMove.move];
+      setTimeout(function() {
+        window.manager.move(bestMove.move);
+        bestMoveResult.innerHTML = 'The best move is: <b style="color: red;">' + ['UP','RIGHT','DOWN','LEFT'][bestMove.move] + '</b>';
+      }, 1000);
     } else {
       bestMoveResult.innerText = "";
     }

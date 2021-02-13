@@ -42,8 +42,6 @@ KeyboardInputManager.prototype.listen = function () {
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
-        var feedbackContainer  = document.getElementById('feedback-container');
-        feedbackContainer.innerHTML = ' ';
         self.emit("move", mapped);
       }
 

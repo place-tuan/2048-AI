@@ -20,6 +20,97 @@
 <body>
   <div class="container">
     <h2 class="title">2048 for dummies</h2>
+
+    <div class="mobileMenu">
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="0" class="valueRadio" />
+          <span style="white-space: nowrap; margin-left: 4px; width: 80px;">Clear cell</span>
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="1024" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">1024</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798157-55f78300-6d8e-11eb-87ce-1bd944cca87f.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem"></div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="512" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">512</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798144-542dbf80-6d8e-11eb-92e9-1629f8b50544.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="256" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">256</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798154-55f78300-6d8e-11eb-8380-08d22158a9f9.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="128" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">128</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798142-53952900-6d8e-11eb-91f8-a82cd504439d.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="64" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">64</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798151-555eec80-6d8e-11eb-887e-7642b93dd929.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="32" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">32</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798135-5263fc00-6d8e-11eb-8a20-c932886934c5.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="16" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">16</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798148-54c65600-6d8e-11eb-94f1-53558ec81254.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="8" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">8</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107801986-5cd4c480-6d93-11eb-9ea6-113f7e7fd903.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="4" class="valueRadio" />
+          <span style="margin-left: 4px; margin-right: 6px;">4</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107798146-54c65600-6d8e-11eb-94b7-6017a998370b.jpg" />
+        </label>
+      </div>
+
+      <div class="mobileMenuItem">
+        <label style="display: flex;align-items: center;">
+          <input name='value' type='radio' value="2" class="valueRadio" checked />
+          <span style="margin-left: 4px; margin-right: 6px;">2</span>
+          <img style="height: 30px;" src="https://user-images.githubusercontent.com/57336797/107835136-0f744980-6dcb-11eb-9007-4dca1b66afec.png" />
+        </label>
+      </div>
+    </div>
     <div class="game-container">
       <div class="grid-container">
         <div class="grid-row">
@@ -51,8 +142,9 @@
       <div class="tile-container">
       </div>
     </div>
+    <div style="margin-top: 10px;margin-bottom: 10px; min-height: 20px;" id="bestMoveResult"></div>
 
-    <div style="position: fixed; top: 30px; left: 50%; width: 100px; padding: 10px; margin-left: 280px">
+    <div class="fixedMenu">
       <div style="white-space: nowrap;">
         Select one of these, then click <br/>anywhere on the board to set it
       </div>
@@ -132,18 +224,17 @@
           <span style="white-space: nowrap; margin-left: 4px; width: 80px;">Clear cell</span>
         </label>
       </div>
-
-      <input
-        hidden
-        id='input'
-        style="padding-left: 4px;height: 25px;" type="text"
-        value="2"
-      />
     </div>
+
+    <input
+      hidden
+      id='input'
+      style="padding-left: 4px;height: 25px;" type="text"
+      value="2"
+    />
 
     <div style="margin-top: 10px; margin-bottom: 10px;">
       <button id="startStopBtn" class="ai-button">Start Game</button>
-      <span style="margin-left: 60px;" id="bestMoveResult"></span>
     </div>
 
     <div>If you need to fix the board, stop the game first.</div>
