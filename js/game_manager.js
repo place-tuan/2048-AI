@@ -63,7 +63,7 @@ GameManager.prototype.setup = function () {
     if (mv) {
       setTimeout(function() {
         window.manager.move(bestMove.move);
-        bestMoveResult.innerHTML = 'The best move is: <b style="color: red;">' + ['UP','RIGHT','DOWN','LEFT'][bestMove.move] + '</b>';
+        bestMoveResult.innerHTML = 'The best move was: <b style="color: red;">' + ['UP','RIGHT','DOWN','LEFT'][bestMove.move] + '</b>';
       }, 1000);
     } else {
       bestMoveResult.innerText = "";
